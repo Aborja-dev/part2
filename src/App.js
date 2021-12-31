@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import Services from './appServices'
 
 import Form  from './components/Form'
 import  Display  from './components/Display'
 import Header from './components/Header'
 
-
-
-const contactList = [
-  { name: 'Arto Hellas', number: '040-123456' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-]
-
 const Agenda = ()=>{
 
-  const [contacts, setContacts] = useState(contactList)
+  const [contacts, setContacts] = useState([])
   const [newSearch, setNewSearch] = useState('')
+
+  const hookInit = ()=>{
+    getContacts()
+  }
+
+  const getContacts = ()=>{
+    Services.getAll().then(data=>setContacts(data))
+  }
+
+  useEffect(hookInit, [])
 
   const addContact =(contact)=>{
     const newContact = contact
@@ -41,7 +42,6 @@ const Agenda = ()=>{
     console.warn(message)
     alert(message)
   }
-
   const filteredContact = filterContacts(newSearch)
   return(
     <div>

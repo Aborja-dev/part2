@@ -11,6 +11,7 @@ const Form = ({submitForm}) => {
         }
         return newContact
       }
+      
     const submit = (e)=>{
         e.preventDefault()
         submitForm(createNewContact())
@@ -19,10 +20,12 @@ const Form = ({submitForm}) => {
         <div>
             <form onSubmit={submit}>
                 <div>
-                    <label>Nombre</label><input onChange={(e) => setNewName(e.target.value)} value={newName} />
+                    <label>Nombre</label>
+                    <input onChange={(e) => setNewName(e.target.value)} value={newName} />
                 </div>
                 <div>
-                    <label>Numero</label><input onChange={(e) => setNumber(e.target.value)} value={newNumber} />
+                    <label>Numero</label>
+                    <input onChange={(e) => setNumber(e.target.value)} value={newNumber} />
                 </div>
                 <div>
                     <button type='submit'>Agregar</button>
