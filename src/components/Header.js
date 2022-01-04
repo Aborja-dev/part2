@@ -1,9 +1,11 @@
+import FormInput from "./Input"
+
 const Header = ({value, onSearch})=>{
  
     return(
         <div>
             <h2>Agenda de telefono</h2>
-            <input value={value} onChange={(e)=>onSearch(e.target.value)}/>
+            <FormInput label={''} value={value} setChange={onSearch} />
         </div>
     )
 }

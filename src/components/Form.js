@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
+import FormInput from './Input'
 
 const Form = ({submitForm}) => {
-    const [newName, setNewName] = useState('')
-    const [newNumber, setNumber] = useState('')
+    const [newName, setNewName] =  useState('')
+    const [newNumber, setNewNumber]  = useState('')
 
     const createNewContact = ()=>{
         const newContact = {
           name: newName,
           number: newNumber
         }
+        console.info(newContact)
         return newContact
       }
       
@@ -19,14 +21,8 @@ const Form = ({submitForm}) => {
     return (
         <div>
             <form onSubmit={submit}>
-                <div>
-                    <label>Nombre</label>
-                    <input onChange={(e) => setNewName(e.target.value)} value={newName} />
-                </div>
-                <div>
-                    <label>Numero</label>
-                    <input onChange={(e) => setNumber(e.target.value)} value={newNumber} />
-                </div>
+                <FormInput label={'Nombre'} value={newName} setChange={setNewName} />
+                <FormInput label={'Numero'} value={newNumber} setChange={setNewNumber} />
                 <div>
                     <button type='submit'>Agregar</button>
                 </div>

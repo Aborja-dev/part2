@@ -1,3 +1,5 @@
+import DisplayItem from "./DisplayItem"
+
 const Display = ({contacts}) => {
     return (
         <div>
@@ -5,10 +7,10 @@ const Display = ({contacts}) => {
             {contacts
                 ? <ul>
                     {contacts.map(contact =>
-                        <li key={contact.name}>{contact.name} <strong>{contact.number}</strong></li>
+                        <DisplayItem key={contact.name} item={contact}/>
                     )}
                 </ul>
-                : 'No se encontro contacto'
+                : 'No se encontro contactos'
 
             }
         </div>
